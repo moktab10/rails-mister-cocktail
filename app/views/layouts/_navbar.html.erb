@@ -1,10 +1,14 @@
 <nav class="navbar navbar-light bg-light justify-content-between">
-  <a class="navbar-brand">Mr Cocktail</a>
+  <%= link_to "Mokhtar Cocktails", cocktails_path, class: "navbar-brand" %>
   <form class="form-inline">
-    <%= simple_form_for :search, url: root_path, method: "GET", html: { class: 'form-inline' } do |f| %>
+    <%= simple_form_for :search, url: root_path, method: "GET" do |f| %>
     <%= f.input :name, input_html: {value: ""}, label: false %>
     <%= f.submit "Search", class: "btn btn-outline-success" %>
     <% end %>
+    <%= link_to cocktails_path  do %>
+              <i class="fas fa-redo"></i>
+              <% end %>
     <%= link_to "Add a cocktail", new_cocktail_path, class: "btn btn-outline-success" %>
   </form>
 </nav>
+

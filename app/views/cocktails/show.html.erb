@@ -12,7 +12,6 @@
           <tr>
             <td><%= dose.ingredient.name %></td>
             <td><p><%= dose.description %>
-              Cl
             </p></td>
             <td>
               <%= link_to dose_path(dose), method: :delete, data: { confirm: "Are you sure?" } do %>
@@ -23,5 +22,6 @@
           <% end %>
         </tbody>
       </table>
-      <%= button_to "Back", cocktails_path, :method => "get", class: "btn btn-outline-success show-button" %>
+      <%= button_to "Back", cocktails_path, :method => "get", class: "btn btn-outline-success show-button", form: {style: 'display:inline-block;'}  %>
+      <%= button_to "Add ingredients", new_cocktail_dose_path(@cocktail), :method => "get", class: "btn btn-outline-success show-button", form: {style: 'display:inline-block;'} %>
 </div>
