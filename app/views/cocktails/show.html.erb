@@ -22,7 +22,9 @@
           <% end %>
         </tbody>
       </table>
-      <%= cl_image_tag @cocktail.photo.key, height: 300, width: 400, crop: :fill %>
       <%= button_to "Back", cocktails_path, :method => "get", class: "btn btn-outline-success show-button", form: {style: 'display:inline-block;'}  %>
       <%= button_to "Add ingredients", new_cocktail_dose_path(@cocktail), :method => "get", class: "btn btn-outline-success show-button", form: {style: 'display:inline-block;'} %>
+      <div class="img-show">
+        <%= cl_image_tag @cocktail.photo.key, height: 400, width: 600, crop: :fill %>
+      </div>
 </div>
