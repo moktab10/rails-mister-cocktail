@@ -1,6 +1,7 @@
 <div class="container mt-5">
   <%= simple_form_for @cocktail do |f| %>
   <%= f.input :name %>
+  <%= f.input :photo, as: :file %>
   <%= f.submit "Submit", class: "btn btn-outline-success show-button" %>
   <% end %>
   <%= button_to "Back", cocktails_path, :method => "get", class: "btn btn-outline-success show-button" %>
