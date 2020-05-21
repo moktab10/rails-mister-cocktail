@@ -1,30 +1,39 @@
 <div class="container">
   <h1><%= @cocktail.name %></h1>
-      <h3>Recipe</h3>
-      <table class="table table-bordered">
-        <tbody>
-          <thead>
-            <th>Ingredient</th>
-            <th>Description</th>
-            <th>Action</th>
-          </thead>
-          <% @cocktail.doses.each do |dose| %>
-          <tr>
-            <td><%= dose.ingredient.name %></td>
-            <td><p><%= dose.description %>
-            </p></td>
-            <td>
-              <%= link_to dose_path(dose), method: :delete, data: { confirm: "Are you sure?" } do %>
-              <i class="fa fa-trash destroy_dose"></i>
-              <% end %>
-            </td>
-          </tr>
+  <h3>Recipe</h3>
+  <table class="table table-bordered">
+    <tbody>
+      <thead>
+        <th>Ingredient</th>
+        <th>Description</th>
+        <th>Action</th>
+      </thead>
+      <% @cocktail.doses.each do |dose| %>
+      <tr>
+        <td><%= dose.ingredient.name %></td>
+        <td><p><%= dose.description %>
+        </p></td>
+        <td>
+          <%= link_to dose_path(dose), method: :delete, data: { confirm: "Are you sure?" } do %>
+          <i class="fa fa-trash destroy_dose"></i>
           <% end %>
-        </tbody>
-      </table>
-      <%= button_to "Back", cocktails_path, :method => "get", class: "btn btn-outline-success show-button", form: {style: 'display:inline-block;'}  %>
-      <%= button_to "Add ingredients", new_cocktail_dose_path(@cocktail), :method => "get", class: "btn btn-outline-success show-button", form: {style: 'display:inline-block;'} %>
-      <div class="img-show">
-        <%= cl_image_tag @cocktail.photo.key, height: 400, width: 600, crop: :fill %>
-      </div>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= button_to "Back", cocktails_path, :method => "get", class: "btn btn-outline-success show-button", form: {style: 'display:inline-block;'}  %>
+  <%= button_to "Add ingredients", new_cocktail_dose_path(@cocktail), :method => "get", class: "btn btn-outline-success show-button", form: {style: 'display:inline-block;'} %>
+  <h5>All reviews</h5>
+<ul>
+</ul>
+<% @cocktail.reviews.each do |review| %>
+<li><%= review.rating %> -- <%= review.content%></li>
+<% end %>
+</ul>
+<br>
+<%= render 'reviews/form', cocktail: @cocktail, review: @review %>
+  <div class="img-show">
+    <%= cl_image_tag @cocktail.photo.key, height: 400, width: 600, crop: :fill %>
+  </div>
 </div>
